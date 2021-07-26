@@ -1,0 +1,53 @@
+<form [formGroup]="empForm" #formDirective="ngForm" (ngSubmit)="onFormSubmit(formDirective)">
+  <table class="center">
+    <tr>
+      <td>
+        <label>Enter name</label>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Enter name" [(ngModel)]="name" formControlName="name" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Select task</label>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-select formControlName="ta" [(value)]="selected">
+            <mat-option *ngFor="let task of tasks" [value]="task">
+              {{ task.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Description</label>
+      </td>
+      <td>
+        <mat-form-field>
+          <textarea matInput class="description" readonly>{{selected.description}}</textarea>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Solution</label>
+      </td>
+      <td>
+        <mat-form-field> 
+          <input matInput class="solution" [(ngModel)]="solution" formControlName="sol" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="centerButton" mat-raised-button type="submit" color="primary">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
